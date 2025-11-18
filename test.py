@@ -2,6 +2,8 @@ import requests
 
 url = 'http://localhost:9696/predict'
 
+# url = 'https://predict-fare.fly.dev/predict'
+
 trip = {
     "timestamp": "2025-01-20T15:42:00",
     "pickup_latitude": 40.7580,
