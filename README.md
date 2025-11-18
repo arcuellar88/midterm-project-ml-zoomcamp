@@ -251,3 +251,43 @@ docker run -it --rm -p 9696:9696 predict-fare
 The API will be available at:
 http://localhost:9696/predict
 
+
+
+## Deployment Fly.io
+
+Install fly.io
+
+```sh
+curl -L https://fly.io/install.sh | sh
+```
+
+Autenticate and deploy
+
+```sh
+fly auth signup
+fly launch --generate-name
+fly deploy
+```
+
+Get the URL from the logs, it should be something along these lines:
+
+Visit your newly deployed app at https://predict-fare.fly.dev/
+Put the url into test.py and check that it works.
+
+Now you can terminate the deployment
+
+```sh
+fly apps destroy <app-name>
+``` 
+### Sample images and video
+
+app-name: predict-fare
+
+![](images/flyio_docs.png)
+
+![](images/flyio_testpy.png)
+
+<video src="https://github.com/user-attachments/assets/d987bdd4-7604-4d3f-9d8a-cbabcc43b3ec"></video>
+
+
+
