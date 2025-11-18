@@ -15,5 +15,8 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "geopandas>=1.1.1",
+    "h3>=4.3.1",
+    "kagglehub[pandas-datasets]>=0.3.13",
     "requests>=2.32.5",
 ]
