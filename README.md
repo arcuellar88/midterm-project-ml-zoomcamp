@@ -1,10 +1,10 @@
-# 🚕 NYC Taxi Fare Prediction — Project Summary
+# 🚕 Uber Taxi Fare Prediction — Project Summary
 
-This project builds a machine-learning model capable of predicting the fare amount of a New York City taxi trip based on trip characteristics available at the moment of pickup. The model is designed to be used in a real-time API for fare estimation, following a production-ready MLOps workflow.
+This project builds a machine-learning model capable of predicting the fare amount of a New York City Uber trip based on trip characteristics available at the moment of pickup. The model is designed to be used in a real-time API for fare estimation, following a production-ready MLOps workflow.
 
 ## 🎯 Project Goal
 
-Estimate the total taxi fare before the trip begins using features such as trip distance, pickup time, pickup/dropoff locations, and passenger count.
+Estimate the total Uber fare before the trip begins using features such as trip distance, pickup time, pickup/dropoff locations, and passenger count.
 
 The model is intended for use with new unseen data, enabling applications like mobile apps, ride-hailing services, or pricing simulations.
 
@@ -65,7 +65,7 @@ Key insights include:
 ### 1. Dummy Regressor
 
 - Baseline for comparison
-- RMSE ≈ 0.30 (log-fare scale)
+- RMSE ≈ 0.50 (log-fare scale)
 
 ### 2. Linear Regression
 
@@ -146,7 +146,7 @@ uv sync
 
 ```
 
-####. Development dependencies (--dev)
+#### Development dependencies (--dev)
 
 Required for:
 
@@ -169,32 +169,32 @@ If you want to retrain the model:
 
 ```sh
 uv sync --dev
-python train.py
+uv run python train.py
 ```
 
 This will produce a new model.bin that is later used by predict.py.
 
-### 🧪 3. Test the API Client
+### ▶️ 3. Run the Prediction API Locally
+
+Start the FastAPI server:
+
+```sh
+uv sync
+uv run uvicorn predict:app --host 0.0.0.0 --port 9696
+```
+
+You can then send requests to:
+http://localhost:9696/predict
+
+### 🧪 4. Test the API Client
 
 A small test.py script is included that calls the API using requests.
 Since requests is a dev dependency, install dev deps first:
 
 ```sh
 uv sync --dev
-python test.py
+uv run python test.py
 ```
-
-### ▶️ 4. Run the Prediction API Locally
-
-Start the FastAPI server:
-
-```sh
-uv sync
-uvicorn predict:app --host 0.0.0.0 --port 9696
-```
-
-You can then send requests to:
-http://localhost:9696/predict
 
 ### 📘 5. Use the Interactive API Docs (Swagger UI)
 
@@ -227,7 +227,7 @@ test predictions directly from your browser (no need for curl or external script
 **Response:**
 ```json
 {
-  "fare_amount": 4.021735668182373
+  "fare_amount": 54.79786682128906
 }
 ```
 
@@ -291,3 +291,18 @@ app-name: predict-fare
 
 
 
+## 📚 References
+
+This project is part of the Machine Learning Zoomcamp course by Alexey Grigorev.  @DataTalksClub @alexeygrigorev
+
+Machine Learning Zoomcamp — Course materials and guidance
+https://datatalks.club/blog/machine-learning-zoomcamp.html
+
+Author: Alexey Grigorev
+
+Uber Fares Dataset — Primary dataset used for model development
+https://www.kaggle.com/datasets/yasserh/uber-fares-dataset
+
+Author: Yasser H.
+
+💡 Built with help from ChatGPT.

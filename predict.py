@@ -7,6 +7,8 @@ import h3
 from pydantic import BaseModel, validator
 from datetime import datetime
 import pandas as pd
+import numpy as np
+
 # NYC bounding box (approximate)
 NY_LAT_MIN = 40.4774
 NY_LAT_MAX = 40.9176
@@ -138,8 +140,9 @@ print("Loaded pipeline:", type(pipeline))
 
 def predict_single(trip_dict):
     X = preprocess(trip_dict)
-    pred = pipeline.predict(X)[0]  
-    return float(pred)
+    log_pred = pipeline.predict(X)[0]
+    fare = np.expm1(log_pred)     
+    return float(fare)
 
 
 
